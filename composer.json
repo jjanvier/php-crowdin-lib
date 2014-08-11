@@ -1,0 +1,31 @@
+{
+    "name": "jjanvier/crowdin-lib",
+    "type": "library",
+    "description": "Library used by CrowdinBundle to handle Crowdin translations",
+    "keywords": ["crowdin", "translating", "localization"],
+    "homepage": "https://github.com/jjanvier/php-crowdin-lib",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julien Janvier",
+            "homepage": "https://github.com/jjanvier"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/finder": "~2.2",
+        "akeneo/crowdin-api": "*@dev",
+        "knplabs/github-api": "*@dev"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Jjanvier\\Library\\Crowdin\\": "" }
+    },
+    "target-dir": "Jjanvier/Library/Crowdin",
+    "minimum-stability": "stable"
+}
