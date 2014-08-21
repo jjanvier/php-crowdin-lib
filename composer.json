@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/finder": "~2.2",
-        "akeneo/crowdin-api": "*@dev",
+        "akeneo/crowdin-api": "1.0.*@dev",
         "knplabs/github-api": "*@dev"
     },
     "require-dev": {
