@@ -1,6 +1,7 @@
 vendor/
 bin/*
 !bin/console
-
+config/parameters*
+!config/parameters.yml.dist
 composer.phar
 composer.lock

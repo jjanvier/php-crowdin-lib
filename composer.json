@@ -15,7 +15,9 @@
         "php": ">=5.3.3",
         "symfony/finder": "~2.2",
         "symfony/console": "~2.2",
+        "symfony/config": "~2.2",
         "symfony/dependency-injection": "~2.2",
+        "symfony/yaml": "~2.2",
         "akeneo/crowdin-api": "1.0.*@dev",
         "knplabs/github-api": "*@dev"
     },

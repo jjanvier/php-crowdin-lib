@@ -1,0 +1,22 @@
+parameters:
+    ## required parameters, please fill them
+    crowdin_project_identifier: ~
+    crowdin_api_key: ~
+    github_username: ~
+    github_email: ~
+    github_project: ~
+    github_organization: ~
+    github_token: ~
+
+    ## optional parameters with their default value
+    # project_path: /tmp/crowdin
+    # project_default_locale: en
+    # project_translation_path: src/*/*/*/Resources/translations
+    # archive_clean: false
+    # archive_path: /tmp/crowdin
+    # archive_header: ~
+    # github_origin_branch: master
+    # github_pr_title: [AUTO] Updating translations from Crowdin
+    # github_pr_message: ~
+    # git_branch_prefix: crowdin
+    # git_commit_message: Updating translations from Crowdin

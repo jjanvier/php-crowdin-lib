@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="jjanvier_crowdin.crowdin_client.class">Crowdin\Client</parameter>
+        <parameter key="jjanvier_crowdin.archive.class">Jjanvier\Library\Crowdin\Archive\Archive</parameter>
+        <parameter key="jjanvier_crowdin.synchronizer.git_handler.class">Jjanvier\Library\Crowdin\Synchronizer\GitHandler</parameter>
+        <parameter key="jjanvier_crowdin.synchronizer.down_synchronizer.class">Jjanvier\Library\Crowdin\Synchronizer\DownSynchronizer</parameter>
+        <parameter key="jjanvier_crowdin.synchronizer.up_synchronizer.class">Jjanvier\Library\Crowdin\Synchronizer\UpSynchronizer</parameter>
+        <parameter key="jjanvier_crowdin.translation.finder.class">Jjanvier\Library\Crowdin\Translation\TranslationFinder</parameter>
+        <parameter key="jjanvier_crowdin.translation.mapper.class">Jjanvier\Library\Crowdin\Translation\TranslationMapper</parameter>
+
+        <parameter key="project_path">/tmp/crowdin</parameter>
+        <parameter key="project_default_locale">en</parameter>
+        <parameter key="project_translation_path">src/*/*/*/Resources/translations</parameter>
+
+        <parameter key="archive_clean">false</parameter>
+        <parameter key="archive_path">/tmp/crowdin</parameter>
+        <parameter key="archive_header" />
+
+        <parameter key="github_origin_branch">master</parameter>
+        <parameter key="github_pr_title">[AUTO] Updating translations from Crowdin</parameter>
+        <parameter key="github_pr_message" />
+
+        <parameter key="git_branch_prefix">crowdin</parameter>
+        <parameter key="git_commit_message">Updating translations from Crowdin</parameter>
+    </parameters>
+
+    <services>
+        <service id="jjanvier_crowdin.crowdin_client" class="%jjanvier_crowdin.crowdin_client.class%">
+            <argument>%crowdin_project_identifier%</argument>
+            <argument>%crowdin_api_key%</argument>
+        </service>
+
+        <service id="jjanvier_crowdin.archive" class="%jjanvier_crowdin.archive.class%">
+            <argument>%archive_path%</argument>
+            <argument>%project_path%</argument>
+            <argument>%archive_clean%</argument>
+            <argument>%archive_header%</argument>
+        </service>
+
+        <service id="jjanvier_crowdin.synchronizer.down_synchronizer" class="%jjanvier_crowdin.synchronizer.down_synchronizer.class%">
+            <argument type="service" id="jjanvier_crowdin.translation.finder" />
+            <argument type="service" id="jjanvier_crowdin.archive" />
+            <argument type="service" id="jjanvier_crowdin.synchronizer.git_handler" />
+            <argument type="service" id="jjanvier_crowdin.crowdin_client" />
+        </service>
+
+        <service id="jjanvier_crowdin.synchronizer.git_handler" class="%jjanvier_crowdin.synchronizer.git_handler.class%">
+            <argument>%github_username%</argument>
+            <argument>%github_email%</argument>
+            <argument>%github_token%</argument>
+            <argument>%github_organization%</argument>
+            <argument>%github_project%</argument>
+            <argument>%github_origin_branch%</argument>
+            <argument>%github_pr_title%</argument>
+            <argument>%github_pr_message%</argument>
+            <argument>%git_branch_prefix%</argument>
+            <argument>%git_commit_message%</argument>
+        </service>
+
+        <service id="jjanvier_crowdin.translation.finder" class="%jjanvier_crowdin.translation.finder.class%">
+            <argument>%project_path%</argument>
+            <argument>%project_translations_path%</argument>
+            <argument>%project_default_locale%</argument>
+        </service>
+
+        <service id="jjanvier_crowdin.translation.mapper" class="%jjanvier_crowdin.translation.mapper.class%" />
+
+        <service id="jjanvier_crowdin.synchronizer.up_synchronizer" class="%jjanvier_crowdin.synchronizer.up_synchronizer.class%">
+            <argument type="service" id="jjanvier_crowdin.crowdin_client" />
+            <argument type="service" id="jjanvier_crowdin.synchronizer.git_handler" />
+            <argument type="service" id="jjanvier_crowdin.translation.finder" />
+            <argument type="service" id="jjanvier_crowdin.translation.mapper" />
+        </service>
+    </services>
+</container>
