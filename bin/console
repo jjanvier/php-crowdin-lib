@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Jjanvier\Library\Crowdin\Application\Application;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+
+$container = new ContainerBuilder();
+
+$application = new Application();
+$application->setContainer($container);
+$application->registerCommands();
+$application->run();

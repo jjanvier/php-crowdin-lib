@@ -39,7 +39,7 @@ abstract class ContainerAwareCommand extends Command implements ContainerAwareIn
                 throw new \LogicException('The container cannot be retrieved as the application instance is not yet set.');
             }
 
-            $this->container = $application->getKernel()->getContainer();
+            $this->container = $application->getContainer();
         }
 
         return $this->container;

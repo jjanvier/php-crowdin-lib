@@ -1,5 +1,6 @@
 vendor/
-bin/
+bin/*
+!bin/console
 
 composer.phar
 composer.lock
