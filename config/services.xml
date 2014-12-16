@@ -15,7 +15,7 @@
 
         <parameter key="project_path">/tmp/crowdin</parameter>
         <parameter key="project_default_locale">en</parameter>
-        <parameter key="project_translation_path">src/*/*/*/Resources/translations</parameter>
+        <parameter key="project_translations_path">src/*/*/*/Resources/translations</parameter>
 
         <parameter key="archive_clean">false</parameter>
         <parameter key="archive_path">/tmp/crowdin</parameter>

@@ -11,7 +11,7 @@ parameters:
     ## optional parameters with their default value
     # project_path: /tmp/crowdin
     # project_default_locale: en
-    # project_translation_path: src/*/*/*/Resources/translations
+    # project_translations_path: src/*/*/*/Resources/translations
     # archive_clean: false
     # archive_path: /tmp/crowdin
     # archive_header: ~
